@@ -6,7 +6,7 @@
 
 {% block body %}
 <p>{{question.question}}</p>
-<form action='/answer/{{idx}}' method="POST">
+<form action="/answers/{{idx}}" method="POST">
   <div>
     {% for choice in question.choices %}
     <label for="{{choice}}">{{choice.capitalize()}}</label>

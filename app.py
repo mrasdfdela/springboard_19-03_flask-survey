@@ -12,7 +12,17 @@ responses = []
 def home_page():
     return render_template("index.html", survey=satisfaction_survey)
 
+
 @app.route('/questions/<int:idx>')
 def questions(idx):
-  question = satisfaction_survey.questions[idx]
-  return render_template("question.html",survey=satisfaction_survey,idx=idx, question=question)
+    import pdb
+    pdb.set_trace()
+    question = satisfaction_survey.questions[idx]
+    return render_template("question.html",survey=satisfaction_survey, idx=idx, question=question)
+
+
+@app.route('/answers/<int:idx>', methods=['POST'])
+def answers(idx):
+    new = int(idx) + 1
+    responses.append(request.form['survey_question'])
+    return redirect(f"/questions/{new}")
