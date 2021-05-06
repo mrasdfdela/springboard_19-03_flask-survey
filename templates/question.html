@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block body %}
+{% for category,msg in get_flashed_messages(with_categories=true) %}
+  <p>{{msg}}</p>
+{% endfor %}
+
 <p>{{question.question}}</p>
 <form action="/answers/{{idx}}" method="POST">
   <div>
